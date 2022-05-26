@@ -82,9 +82,9 @@ $(document).ready(function () {
             else if(type == 2)
                 array.push(kiwi[i].postOrder)
         }
-        return array
+        return array;
     }
-
+ 
     function drawing(long, nItem, type) {
         var c = document.getElementById("arrayPosition");
         var ctx = c.getContext("2d");
