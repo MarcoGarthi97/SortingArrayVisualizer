@@ -69,7 +69,7 @@ $(document).ready(function () {
                 }
             }
         }       
-        return array
+        return array;
     }
 
     function createArrayByKiwi(type){
