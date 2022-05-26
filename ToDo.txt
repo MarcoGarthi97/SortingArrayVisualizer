@@ -1,0 +1,26 @@
+Progetto: Sorting Visualizer
+
+Incipit: dato un determintato numero, creare un array con N elementi, questi si dovranno vedere a schermo come se fossero delle colonne.
+Goal: riuscire a riordinare l'array dal più piccolo al più grande, facendo vedere come gli elementi si muovo all'interno dell'array.
+
+Cosa da fare:
+	- Cercare di capire come gestire i pixel per creare queste colonne {Conclusa il 24/05/2022}
+	- Riordinare gli elementi dentro l'array, questo sei già in grado di farlo. {Conclusa il 24/05/2022}
+	- Creare un layout carino
+	- Migliorare il movimento dell'array
+
+    -Capire come rendere sincrono il javascript
+
+
+
+
+
+
+
+
+
+
+
+
+
+Marco Garthi.

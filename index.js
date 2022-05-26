@@ -4,7 +4,7 @@ $(document).ready(function () {
     $("#generateArray").click(function() {       
         var array = []
 
-        var long = 7;
+        var long = 25;
         var sizeMax = 500;
         var sizeMin = Math.round(100 * 30 / 100); 
 
@@ -28,14 +28,20 @@ $(document).ready(function () {
                 postOrder: 0,
             }    
         })
-    })
-
-    $("#simpleMode").click(function () {
-
+    
         var kiwiLunghezzaArray = createArrayByKiwi(0)
         var array = getOrdinateArray(kiwiLunghezzaArray)
         
         getPostOrdinateKiwi(array)
+
+        console.log(kiwi)
+    })
+
+    $("#simpleMode").click(function () {
+        var array = createArrayByKiwi(0)
+        array.sort(function(a, b){
+            return a - b 
+        })
 
         var counter = 0;
         const i = setInterval(function(){
@@ -46,8 +52,20 @@ $(document).ready(function () {
                 clearInterval(i);
             }
                 
-        }, 300);        
+        }, 300);  
+        
+        console.log(kiwi)
     })
+
+    $("#changeMode").click(function(){
+        var array = createArrayByKiwi(0)
+        for await(const value of array){
+            console.log(value)
+        }
+            
+    })
+
+
 
     function getPostOrdinateKiwi(array){
         array.forEach((value, index) => {
@@ -108,13 +126,17 @@ $(document).ready(function () {
         ctx.fillRect((35 * nItem) + 35, 20, 10, long);
 
         if(type != 0){
-            grd.addColorStop(0, "red");
-            ctx.fillStyle = grd;
-            ctx.fillRect((35 * nItem) + 10, 20, 35, long);
+            const i = setInterval(function(){
+                grd.addColorStop(0, "red");
+                ctx.fillStyle = grd;
+                ctx.fillRect((35 * nItem) + 10, 20, 35, long);
+    
+                grd.addColorStop(0, "white");
+                ctx.fillStyle = grd;
+                ctx.fillRect((35 * nItem) + 35, 20, 10, long)
 
-            grd.addColorStop(0, "white");
-            ctx.fillStyle = grd;
-            ctx.fillRect((35 * nItem) + 35, 20, 10, long)
+                clearInterval(i);         
+           }, 300);
         }
     }
 
