@@ -4,7 +4,7 @@ $(document).ready(function () {
     $("#generateArray").click(function() {       
         var array = []
 
-        var long = 25;
+        var long = 28;
         var sizeMax = 500;
         var sizeMin = Math.round(100 * 30 / 100); 
 
@@ -58,10 +58,130 @@ $(document).ready(function () {
     })
 
     $("#changeMode").click(function(){
+        var arrayOrdered = createArrayByKiwi(0)
+        var ind = 0;
+        //var max = array.length;
+
+        var nextStep = true
+        var index = 0
+        var arrayPosition = 0
+        var indexPrev = 0
+        var change = false;
+
+        var index2 = 0
+        var valuePrev = 0
+        var value =  0
+
+        var arrayOrdered = arrayOrdered.sort(function(a, b){
+            return a - b 
+        })
+
         var array = createArrayByKiwi(0)
-        for await(const value of array){
-            console.log(value)
-        }
+        var array2 = createArrayByKiwi(0)
+        
+        //console.log(arrayOrdered)
+        //console.log(array)
+
+        var timer = setInterval(()=>{
+            //console.log("")
+
+            if(change == true){
+                change = false
+
+                var c = document.getElementById("arrayPosition");
+                var ctx = c.getContext("2d");
+
+                var grd = ctx.createLinearGradient(0, 0, 170, 0);
+
+                grd.addColorStop(0, "red");                    
+                ctx.fillStyle = grd;
+                ctx.fillRect((35 * indexPrev) + 10, 20, 35, value);
+
+                grd.addColorStop(0, "white");
+                ctx.fillStyle = grd;
+                ctx.fillRect((35 * indexPrev) + 35, 20, 10, value);
+
+            }
+
+            if(nextStep == true){
+                index = array.findIndex(x => x == arrayOrdered[arrayPosition])
+                value = arrayOrdered[arrayPosition]
+                //distance = max - index     
+                
+                //console.log("index: " + index)
+                //console.log("value: " + value)
+
+                nextStep = false
+            }
+
+            if(nextStep == false){
+                if(index - ind - 1 > -1)
+                {
+                    index2 = array.findIndex(x => x == arrayOrdered[arrayPosition])
+                    valuePrev = array[index - ind - 1]
+                    value =  array[index - ind]
+                    indexPrev = array.findIndex(x => x == array[index - ind - 1])
+
+                    //console.log("value: " + value)
+                    //console.log("index2: " + index2)
+                    //console.log("valuePrev: " + valuePrev)
+                    //console.log("indexPrev: " + indexPrev)
+                    //console.log("ind: " + ind)
+
+                    if(value < valuePrev){
+                        var c = document.getElementById("arrayPosition");
+                        var ctx = c.getContext("2d");
+
+                        var grd = ctx.createLinearGradient(0, 0, 170, 0);
+
+                        grd.addColorStop(0, "white");
+                        ctx.fillStyle = grd;
+                        ctx.fillRect((35 * indexPrev) + 10, 20, 35, 900);
+
+                        grd.addColorStop(0, "blue");
+                        
+                        ctx.fillStyle = grd;
+                        ctx.fillRect((35 * indexPrev) + 10, 20, 35, value);
+
+                        grd.addColorStop(0, "white");
+                        ctx.fillStyle = grd;
+                        ctx.fillRect((35 * indexPrev) + 35, 20, 10, value);
+
+                        grd.addColorStop(0, "red");
+                        
+                        ctx.fillStyle = grd;
+                        ctx.fillRect((35 * index2) + 10, 20, 35, valuePrev);
+
+                        grd.addColorStop(0, "white");
+                        ctx.fillStyle = grd;
+                        ctx.fillRect((35 * index2) + 35, 20, 10, valuePrev);
+
+                        array[indexPrev] = value
+                        array[index2] =  valuePrev
+
+                        //console.log("array: " + array)
+
+                        change = true
+                    }
+                    
+                }
+            }
+
+            if(arrayPosition >= array.length){
+                clearInterval(timer);
+            }
+            else if(ind < index) {
+                //console.log("ind ++")
+                ind ++
+            }
+            else{
+                //console.log("arrayPosition ++")
+                nextStep = true
+                arrayPosition ++
+                ind = 0
+            }
+
+        }, 50);
             
     })
 

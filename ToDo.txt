@@ -7,9 +7,9 @@ Cosa da fare:
 	- Cercare di capire come gestire i pixel per creare queste colonne {Conclusa il 24/05/2022}
 	- Riordinare gli elementi dentro l'array, questo sei già in grado di farlo. {Conclusa il 24/05/2022}
 	- Creare un layout carino
-	- Migliorare il movimento dell'array
-
-    -Capire come rendere sincrono il javascript
+	- Migliorare il movimento dell'array {Conclusa il 31/05/2022}
+    - Capire come rendere sincrono il javascript {Conclusa il 31/05/2022}
+	- Creare un sorting a gruppi
 
 
 
